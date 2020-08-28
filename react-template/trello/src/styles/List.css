@@ -1,0 +1,68 @@
+.List {
+  width: 250px;
+  background-color: #fff;
+  max-height: calc(100vh - 150px);
+  margin: 0 20px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--list-background);
+  position: relative;
+}
+.title {
+  font-weight: 500;
+  color: var(--dark-light);
+  font-size: 16px;
+  margin: 0 10px;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.cardsContainer {
+  max-height: calc(100vh - 250px);
+  overflow-y: scroll;
+}
+
+.cardsContainer::-webkit-scrollbar {
+  width: 0;
+}
+
+.List .fa-ellipsis-h {
+  padding: 3px 8px;
+  border-radius: 5px;
+  position: absolute;
+  font-size: 20px;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.List .fa-ellipsis-h:hover {
+  background-color: var(--body-secondary-background);
+}
+
+.List .list_options {
+  font-size: 14px;
+  position: absolute;
+  top: 40px;
+  right: -30px;
+  background-color: white;
+  padding: 5px 0px;
+  z-index: 1;
+  width: 150px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* .List .list_options:hover {
+  background-color: var(--body-secondary-background);
+} */
+.List .list_options p {
+  padding: 5px 20px;
+  /* transition-delay: 100ms; */
+  transition-duration: 200ms;
+}
+.List .list_options p:hover {
+  color: var(--body-background);
+  background-color: var(--body-secondary-background);
+}

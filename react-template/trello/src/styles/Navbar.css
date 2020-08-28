@@ -1,0 +1,14 @@
+.Navbar {
+  height: 60px;
+  font-size: 30px;
+  font-family: "Mogra", cursive;
+  background-color: var(--body-secondary-background);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  text-align: center;
+}

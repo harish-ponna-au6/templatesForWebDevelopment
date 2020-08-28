@@ -1,0 +1,36 @@
+###########################   user routes   #################
+
+### user login
+POST http://localhost:8080/api/user/login
+Content-Type: application/json
+
+{  
+   "email": "user@gmail.com",
+   "password": "9572013"
+}
+
+###  user logout
+DELETE http://localhost:8080/api/user/logout
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWU3MTA5MzUyZWRjNDQxN2EzNGQ2ZmYiLCJpYXQiOjE1OTIyMTY0NDMsImV4cCI6MTU5MjMwMjg0M30.oACaeMHlH1LTZ5Rba-5NoD74gybFspG-fzhVKy2_UvU
+
+### user forgot password
+PATCH  http://localhost:8080/api/user/forgot-password
+Content-Type: application/json
+
+{  
+   "email": "user@gmail.com",
+   "mobile": "9123456789"
+}
+
+### user change password
+PATCH  http://localhost:8080/api/user/change-password
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWU3MTA5MzUyZWRjNDQxN2EzNGQ2ZmYiLCJpYXQiOjE1OTIyMTY0NDMsImV4cCI6MTU5MjMwMjg0M30.oACaeMHlH1LTZ5Rba-5NoD74gybFspG-fzhVKy2_UvU
+
+{  
+   "currentPassword": "82792535",
+   "newPassword": "123456"
+}
+
+
