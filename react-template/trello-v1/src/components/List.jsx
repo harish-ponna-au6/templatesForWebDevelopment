@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import "../styles/List.css";
 import Form from "./Form";
@@ -11,6 +11,21 @@ const List = (props) => {
   const { list, index, deleteAList } = props;
   const [showOptions, setShowOptions] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const titleOptionsRef = useRef();
+
+  useEffect(() => {
+    const handleClickListener = document.addEventListener("mousedown", (e) => {
+      console.log(titleOptionsRef);
+      console.log(e.target);
+      if (
+        titleOptionsRef.current &&
+        !titleOptionsRef.current.contains(e.target)
+      ) {
+        setShowOptions(false);
+      }
+    });
+    return document.removeEventListener("mousedown", handleClickListener);
+  }, [titleOptionsRef]);
 
   return (
     <Draggable draggableId={String(list.listId)} index={index}>
@@ -36,7 +51,7 @@ const List = (props) => {
                         className="fas fa-ellipsis-h"
                       ></i>
                       {showOptions && (
-                        <div className="list_options">
+                        <div ref={titleOptionsRef} className="list_options">
                           <p
                             onClick={() => {
                               setIsEditing(true);
