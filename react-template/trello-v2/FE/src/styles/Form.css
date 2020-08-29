@@ -1,0 +1,65 @@
+.List .Form {
+  margin-top: 15px;
+}
+.Form .textarea {
+  resize: none;
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 60px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.322);
+}
+
+.Form .textarea :focus {
+  outline: 1px solid var(--body-background);
+}
+
+.Form .addACardOrList {
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 5px;
+  transition-delay: 100ms;
+  transition-duration: 100ms;
+  min-width: 220px;
+}
+.Form .addACardOrList i {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.Form .addACardOrList:hover {
+  cursor: pointer;
+  background-color: var(--body-secondary-background);
+  color: white !important;
+}
+
+.Form input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  background-color: rgb(63, 146, 63);
+  color: white;
+  border: none;
+  margin-right: 15px;
+}
+.Form input:hover {
+  background-color: rgb(67, 153, 67);
+}
+
+.Form .fa-times {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--dark-light);
+}
+
+.Form .fa-times:hover {
+  background-color: var(--body-secondary-background);
+}
+
+.Form .listForm {
+  min-height: 20px;
+}
