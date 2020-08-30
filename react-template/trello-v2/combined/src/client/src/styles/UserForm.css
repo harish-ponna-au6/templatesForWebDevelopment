@@ -1,0 +1,49 @@
+.UserForm {
+  min-width: 300px;
+  background-color: var(--list-background);
+  padding: 0 20px 20px;
+  border-radius: 5px;
+  margin: 50px;
+}
+
+.UserForm h2 {
+  text-align: center;
+  margin: 0 0 20px 0;
+  background-color: var(--body-secondary-background);
+  padding: 10px 0;
+  color: white;
+  letter-spacing: 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.UserForm label {
+  margin-left: 10px;
+  letter-spacing: 1px;
+  color: var(--dark-light);
+  font-size: 15px;
+}
+.UserForm input {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 35px;
+  border-radius: 5px;
+  letter-spacing: 1.5px;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+}
+
+.UserForm button {
+  padding: 8px 14px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: rgb(63, 146, 63);
+  color: white;
+  cursor: pointer;
+  letter-spacing: 1.5px;
+}
+
+.UserForm button:hover {
+  background-color: rgb(90, 187, 90);
+}

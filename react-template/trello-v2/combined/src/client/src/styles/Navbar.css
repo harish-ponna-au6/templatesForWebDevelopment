@@ -1,0 +1,33 @@
+.Navbar {
+  height: 60px;
+  font-size: 30px;
+  font-family: "Mogra", cursive;
+  background-color: var(--body-secondary-background);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+}
+.links a {
+  color: white !important;
+  font-size: 18px;
+  text-decoration: none;
+  font-family: poppins;
+}
+
+.links a:hover {
+  color: #0e74af !important;
+}
