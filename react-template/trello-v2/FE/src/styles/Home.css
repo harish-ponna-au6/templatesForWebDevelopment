@@ -7,6 +7,9 @@
   flex-flow: column-reverse;
 }
 
+.Home .Form .addACardOrList {
+  color: white !important;
+}
 .Home .Form i {
   margin-left: 10px;
 }
@@ -31,17 +34,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
   margin: 30px;
   border-radius: 5px;
   height: 100px;
-  width: 200px;
-  cursor: pointer;
+  min-width: 200px;
   transition-delay: 50ms;
   transition-duration: 100ms;
   background-color: var(--list-background);
   position: relative;
 }
+.Home .board a {
+  color: black;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.Home .board a:hover {
+  color: var(--body-background) !important;
+}
 
+.Home .board:hover a {
+  color: white;
+}
 .Home .board:hover {
   color: white;
   background-color: var(--body-secondary-background);

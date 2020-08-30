@@ -1,66 +1,49 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "./Form";
 import "../styles/Home.css";
-import EditForm from "./EditForm";
+import { veiwAllTrelloBoardNames, deleteABoard } from "../redux/actions";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import Board from "./Board";
+import Loading from "./Loading";
 
-const Home = () => {
-  const [showOptions, setShowOptions] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const boardNameOptionsRef = useRef();
+const Home = (props) => {
+  const {
+    veiwAllTrelloBoardNames,
+    trelloBoardNames,
+
+    isLoggedIn
+  } = props;
+
+  const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
-    const handleClickListener = document.addEventListener("mousedown", (e) => {
-      if (
-        boardNameOptionsRef.current &&
-        !boardNameOptionsRef.current.contains(e.target)
-      ) {
-        setShowOptions(false);
-      }
-    });
-    return document.removeEventListener("mousedown", handleClickListener);
-  }, [boardNameOptionsRef]);
+    veiwAllTrelloBoardNames({ setIsLoading });
+  }, [veiwAllTrelloBoardNames]);
+
   return (
-    <div className="Home">
-      <div className="addABoardContainer">
-        <Form isBoard={true} />
+    <>
+      {!isLoggedIn && <Redirect to="/" />}
+      {isLoading && <Loading />}
+      <div className="Home">
+        <div className="addABoardContainer">
+          <Form isBoard={true} />
+        </div>
+        <h2>All Boards</h2>
+        <div className="allBoards">
+          {trelloBoardNames.map((board) => (
+            <Board key={board._id} board={board} />
+          ))}
+        </div>
       </div>
-      <h2>All Boards</h2>
-      <div className="allBoards">
-        {!isEditing ? (
-          <>
-            <div className="board">
-              <p>First Board</p>
-              <i
-                onClick={() => setShowOptions(!showOptions)}
-                className="fas fa-ellipsis-h"
-              ></i>
-              {showOptions && (
-                <div ref={boardNameOptionsRef} className="list_options">
-                  <p
-                    onClick={() => {
-                      setIsEditing(true);
-                      setShowOptions(false);
-                    }}
-                  >
-                    Edit
-                  </p>
-                  {/* <p onClick={() => deleteAList(list.listId)}>Delete</p> */}
-                  <p>Delete</p>
-                </div>
-              )}
-            </div>
-          </>
-        ) : (
-          <EditForm
-            isEditBoard={true}
-            name={`name`}
-            trelloBoardId={`34ghjg`}
-            setIsEditing={setIsEditing}
-          />
-        )}
-      </div>
-    </div>
+    </>
   );
 };
 
-export default Home;
+export default connect(
+  (state) => ({
+    trelloBoardNames: [...state.trelloBoardNames],
+    isLoggedIn: state.user.isLoggedIn
+  }),
+  { veiwAllTrelloBoardNames, deleteABoard }
+)(Home);

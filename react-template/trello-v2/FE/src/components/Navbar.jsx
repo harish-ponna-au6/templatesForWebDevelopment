@@ -1,17 +1,32 @@
 import React from "react";
 import "../styles/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../redux/actions";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const {
+    isLoggedIn,
+    history: { push },
+    logout
+  } = props;
   return (
     <nav className="Navbar">
       <p className="logo">Trello</p>
-      {localStorage.getItem("jwt") && (
+      {isLoggedIn && (
         <div className="links">
           <Link to="/" className="all-boards">
             All Boards
           </Link>
-          <Link to="/" className="logout">
+          <Link
+            to="/"
+            onClick={() => {
+              localStorage.removeItem("jwt");
+              logout();
+              push("/");
+            }}
+            className="logout"
+          >
             Logout
           </Link>
         </div>
@@ -20,4 +35,6 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default connect((state) => ({ isLoggedIn: state.user.isLoggedIn }), {
+  logout
+})(withRouter(Navbar));

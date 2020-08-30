@@ -24,6 +24,7 @@
 .Card .card_options i {
   padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
 }
 .Card .card_options i:hover {
   background-color: var(--body-secondary-background);

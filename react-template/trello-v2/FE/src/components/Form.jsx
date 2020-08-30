@@ -1,19 +1,27 @@
 import React, { useState } from "react";
-import { v4 as uuid } from "uuid";
 import Textarea from "react-textarea-autosize";
 import "../styles/Form.css";
 import { connect } from "react-redux";
-import { addACard, addAList } from "../redux/actions";
+import { addACard, addAList, addABoard } from "../redux/actions";
 
 const Form = (props) => {
-  const { isCard, isList, listId, addACard, addAList, isBoard } = props;
+  const {
+    isCard,
+    isList,
+    listId,
+    addACard,
+    addAList,
+    isBoard,
+    addABoard
+  } = props;
   const [show, setShow] = useState(false);
   const [state, setState] = useState("");
 
   const handleOnMouseDown = () => {
     if (!state) return;
     if (isCard) addACard({ listId, text: state });
-    else addAList(state);
+    if (isList) addAList(state);
+    if (isBoard) addABoard(state);
     setState("");
   };
 
@@ -29,7 +37,7 @@ const Form = (props) => {
     color = "var(--dark-light)";
     className = "cardForm";
   }
-  if (isCard) {
+  if (isList) {
     placeholder = "Enter name of the list";
     buttonText = "Add a List";
     submitText = "Add List";
@@ -45,7 +53,7 @@ const Form = (props) => {
   }
 
   return (
-    <div className="Form">
+    <div className={`Form ${className}`}>
       {show ? (
         <form>
           <Textarea
@@ -66,7 +74,7 @@ const Form = (props) => {
       ) : (
         <div
           onClick={() => setShow(!show)}
-          className="addACardOrList"
+          className={`addACardOrList`}
           style={{ color }}
         >
           <i className="fas fa-plus"></i> {buttonText}
@@ -76,4 +84,4 @@ const Form = (props) => {
   );
 };
 
-export default connect(null, { addACard, addAList })(Form);
+export default connect(null, { addACard, addAList, addABoard })(Form);

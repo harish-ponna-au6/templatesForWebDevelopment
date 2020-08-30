@@ -1,5 +1,5 @@
 .UserForm {
-  width: 300px;
+  min-width: 300px;
   background-color: var(--list-background);
   padding: 0 20px 20px;
   border-radius: 5px;

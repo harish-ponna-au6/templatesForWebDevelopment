@@ -26,12 +26,12 @@ router.post("/api/create-trello-board", authenticate, createTrelloBoard);
 
 // ---------------update routes----------------------
 router.patch(
-  "/api/udpate-trello-board-name/:trelloBoardId",
+  "/api/update-trello-board-name/:trelloBoardId",
   authenticate,
   updateTrelloBoardName
 );
 router.patch(
-  "/api/udpate-trello-board/:trelloBoardId",
+  "/api/update-trello-board/:trelloBoardId",
   authenticate,
   updateTrelloBoard
 );

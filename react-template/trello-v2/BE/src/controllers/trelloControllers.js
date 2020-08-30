@@ -13,9 +13,7 @@ module.exports = {
       const user = await User.findById(req.user._id);
       user.trelloBoardsIds.push(trelloBoard._id);
       user.save();
-      res
-        .status(201)
-        .json({ success: { message: "successfully create trello board" } });
+      res.status(201).json({ data: { trelloBoardName: trelloBoard } });
     } catch (error) {
       console.log(error);
       res.status(500).json({ error: { message: error.message } });
@@ -64,8 +62,6 @@ module.exports = {
     try {
       const { trelloBoardId } = req.params;
       const { trellos } = req.body;
-      if (!trellos)
-        res.status(400).json({ error: { message: "invalid fields" } });
       if (!req.user.trelloBoardsIds.includes(trelloBoardId))
         return res
           .status(401)

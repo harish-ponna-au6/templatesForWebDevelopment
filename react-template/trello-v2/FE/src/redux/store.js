@@ -1,19 +1,19 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { listReducer } from "./reducers";
+import { listReducer } from "./reducers/trellosReducer";
+import { userReducer } from "./reducers/userReducer";
+import { trelloBoardNamesReducer } from "./reducers/trelloBoardNamesReducers";
 import thunk from "redux-thunk";
 
+const rootReducer = combineReducers({
+  trellos: listReducer,
+  trelloBoardNames: trelloBoardNamesReducer,
+  user: userReducer
+});
+
 const store = createStore(
-  listReducer,
+  rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
-
-let timeOut;
-store.subscribe(() => {
-  clearTimeout(timeOut);
-  timeOut = setTimeout(() => {
-    console.log("timout");
-  }, 5000);
-});
 
 export { store };

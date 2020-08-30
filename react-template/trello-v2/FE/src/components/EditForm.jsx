@@ -2,23 +2,29 @@ import React, { useState } from "react";
 import Textarea from "react-textarea-autosize";
 import "../styles/EditForm.css";
 import { connect } from "react-redux";
-import { editACard, editAList } from "../redux/actions";
+import { editACard, editAList, editABoardName } from "../redux/actions";
 
 const EditForm = (props) => {
   const {
     isEditCard,
     isEditList,
     isEditBoard,
+    board,
+    boardId,
     listId,
     cardId,
     title,
     text,
     setIsEditing,
     editAList,
-    editACard
+    editACard,
+    editABoardName
   } = props;
-  const titleOrText = isEditCard ? text : title;
-  const [state, setState] = useState(titleOrText);
+  let titleOrTextOrBoard;
+  if (isEditBoard) titleOrTextOrBoard = board;
+  if (isEditList) titleOrTextOrBoard = title;
+  if (isEditCard) titleOrTextOrBoard = text;
+  const [state, setState] = useState(titleOrTextOrBoard);
 
   let placeholder;
   let submitText;
@@ -44,6 +50,7 @@ const EditForm = (props) => {
     if (!state) return;
     if (isEditCard) editACard({ listId, cardId, text: state });
     if (isEditList) editAList({ listId, title: state });
+    if (isEditBoard) editABoardName({ boardId, name: state });
     setState("");
   };
 
@@ -69,4 +76,6 @@ const EditForm = (props) => {
   );
 };
 
-export default connect(null, { editACard, editAList })(EditForm);
+export default connect(null, { editACard, editAList, editABoardName })(
+  EditForm
+);

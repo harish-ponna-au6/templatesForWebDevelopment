@@ -5,8 +5,9 @@ import {
   DELETE_A_LIST,
   DELETE_A_CARD,
   EDIT_A_LIST,
-  EDIT_A_CARD
-} from "./actionTypes";
+  EDIT_A_CARD,
+  VIEW_TRELLO_BOARD
+} from "../actionTypes";
 
 const listState = [
   {
@@ -28,6 +29,8 @@ const listReducer = (state = listState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case VIEW_TRELLO_BOARD:
+      return payload;
     case ADD_A_LIST:
       return [...state, payload];
     case EDIT_A_LIST: {

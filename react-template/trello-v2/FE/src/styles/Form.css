@@ -23,6 +23,7 @@
   transition-delay: 100ms;
   transition-duration: 100ms;
   min-width: 220px;
+  color: var(--dark-light) !important;
 }
 .Form .addACardOrList i {
   margin-right: 5px;
@@ -60,6 +61,17 @@
   background-color: var(--body-secondary-background);
 }
 
-.Form .listForm {
+.Container .Form.listForm .addACardOrList {
   min-height: 20px;
+  background-color: var(--body-secondary-background) !important;
+  color: white !important;
+}
+.Container .Form.listForm .addACardOrList:hover {
+  color: var(--body-background) !important;
+  min-height: 20px;
+  background-color: var(--body-secondary-background) !important;
+  color: white !important;
+}
+.Container .Form.listForm .addACardOrList:hover {
+  color: var(--body-background) !important;
 }
